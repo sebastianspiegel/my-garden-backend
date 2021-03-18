@@ -15,9 +15,7 @@ DATA = {
         ["Sen­sitive Plant", "Mimosa pudica", "https://www.swallowtailgardenseeds.com/flowers/mimosa/mimosa-sensitive-plant.jpeg", "Soak Mimosa seed in hand hot water, 20 minutes prior to sowing seeds in cell packs or flats. Press into soil, but do not cover. Kept at 75° F., germination is in 21-40 days. Transfer Mimosa seedlings into 3 in. pots once large enough to handle."],
         ["Super Enorma", "English Daisy", "https://www.swallowtailgardenseeds.com/flowers/bellis/english-daisy-super-enorma.jpeg", "Sow seed in cell packs or flats, press into soil and barely cover. Light will aid germination. Kept at 70°F., germination is in 7-21 days. Transplant into the garden 6 in. apart."],
         ["Mad Hatter", "Hot Pepper", "https://www.swallowtailgardenseeds.com/gardens/vegetables/pepper-mad-hatter.jpg", "Sow hot pepper seeds indoors in cell packs or flats, 8 weeks before the last anticipated frost. At 70-90°F., germination is in 8-25 days. When the soil has warmed to at least 60°F., transplant into the garden 18-24 in. apart."]
-    ],
-    :garden_keys => ["name"],
-    :gardens => ["default", "add_test"]
+    ]
 }
 
 def make_seeds
@@ -31,10 +29,15 @@ def make_seeds
 end
 
 def make_gardens
-    DATA[:gardens].each do |garden|
-        Garden.create(name: garden)
-    end
+    g = Garden.new(name: "default")
+    g.user = User.first
+    g.save 
+end
+
+def make_test_user
+    User.create(username: "Gesh")
 end
 
 make_seeds 
+make_test_user
 make_gardens 
