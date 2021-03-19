@@ -22,8 +22,11 @@ class GardensController < ApplicationController
 
     def update 
         garden = Garden.find(params[:id])
-        if garden.update(garden_params)
-            render json: GardenSerializer.new(garden)
+        seed = Seed.find(params[:garden][:id])
+        # byebug 
+        garden.seeds.include?(seed) ? garden.seeds.delete(seed) : garden.seeds << seed 
+        if garden.valid?
+            render json: garden.to_json(include: [:user, :seeds], except: [:created_at, :updated_at])
         else
             render json: {error: "failed to update"}
         end
@@ -32,7 +35,7 @@ class GardensController < ApplicationController
     private
 
     def garden_params
-        params.require(:garden).permit(:name, :user_id)
+        params.require(:garden).permit(:id, :name, :user_id)
     end
 
 end
