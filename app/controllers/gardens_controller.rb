@@ -5,6 +5,11 @@ class GardensController < ApplicationController
         render json: garden.to_json(include: [:user, :seeds], except: [:created_at, :updated_at])
     end
 
+    def index
+        gardens = Garden.all 
+        render json: GardenSerializer.new(gardens)
+    end
+
     def create
         garden = Garden.new(garden_params)
         if garden.save

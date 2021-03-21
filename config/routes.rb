@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :gardens
   end
+
+  resources :gardens 
   
 end
