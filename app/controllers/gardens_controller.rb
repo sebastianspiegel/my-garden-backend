@@ -11,6 +11,7 @@ class GardensController < ApplicationController
     end
 
     def create
+        byebug
         garden = Garden.new(garden_params)
         if garden.save
             render json: GardenSerializer.new(garden)
@@ -40,7 +41,7 @@ class GardensController < ApplicationController
     private
 
     def garden_params
-        params.require(:garden).permit(:id, :name, :user_id)
+        params.require(:garden).permit(:name, :user_id)
     end
 
 end

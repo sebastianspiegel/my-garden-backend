@@ -1,24 +1,26 @@
-# README
+# Story Peddler (backend)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails API for the My Garden application. To be used with https://github.com/sebastianspiegel/my-garden-frontend. 
 
-Things you may want to cover:
+My Garden is an organizational application for amature gardeners. It was made for my mother, who wanted to be able to view all of the information on her seed packets at one time. 
 
-* Ruby version
+This application was created as part of the software develpment course at Flatiron school. It was build using Ruby on Rails, React, and Redux. 
 
-* System dependencies
+## Installation
 
-* Configuration
+After downloading, navigate into the repo and execute:
+1. ``` bundle install ```
+2. ``` rails s ```
+This will start the database server. 
 
-* Database creation
+## Development 
 
-* Database initialization
+This site is currently under development. 
 
-* How to run the test suite
+## Contributing
 
-* Services (job queues, cache servers, search engines, etc.)
+Bug reports and pull requests are welcome on GitHub at https://github.com/sebastianspiegel/my-garden-backend/. 
 
-* Deployment instructions
+## License
 
-* ...
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
