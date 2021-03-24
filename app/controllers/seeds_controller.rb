@@ -10,6 +10,7 @@ class SeedsController < ApplicationController
     end
 
     def create
+        # byebug
         seed = Seed.new(seed_params)
         if seed.save
             render json: SeedSerializer.new(seed)

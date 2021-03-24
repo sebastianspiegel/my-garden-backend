@@ -11,7 +11,7 @@ class GardensController < ApplicationController
     end
 
     def create
-        byebug
+        # byebug 
         garden = Garden.new(garden_params)
         if garden.save
             render json: GardenSerializer.new(garden)
@@ -26,10 +26,16 @@ class GardensController < ApplicationController
         render json: {message: "garden has been deleted"}
     end
 
+    def remove
+        byebug
+        garden = Garden.find(params[:id])
+        seed = Seed.find(params[:garden][:id])
+        garden.seeds.delete(seed)
+    end
+
     def update 
         garden = Garden.find(params[:id])
         seed = Seed.find(params[:garden][:id])
-        # byebug 
         garden.seeds.include?(seed) ? garden.seeds.delete(seed) : garden.seeds << seed 
         if garden.valid?
             render json: garden.to_json(include: [:user, :seeds], except: [:created_at, :updated_at])

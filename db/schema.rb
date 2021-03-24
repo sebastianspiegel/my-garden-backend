@@ -28,18 +28,6 @@ ActiveRecord::Schema.define(version: 2021_03_15_155545) do
     t.index ["seed_id"], name: "index_gardens_seeds_on_seed_id"
   end
 
-  create_table "notes", force: :cascade do |t|
-    t.text "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "seasons", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "seeds", force: :cascade do |t|
     t.string "common_name"
     t.string "latin_name"
@@ -51,6 +39,7 @@ ActiveRecord::Schema.define(version: 2021_03_15_155545) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
