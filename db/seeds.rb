@@ -29,13 +29,13 @@ def make_seeds
 end
 
 def make_gardens
-    g = Garden.new(name: "default")
+    g = Garden.new(name: "Default Garden")
     g.user = User.first
     g.save 
 end
 
 def make_test_user
-    User.create(username: "Gesh")
+    User.create(username: "Gesh", password: "password")
 end
 
 make_seeds 
