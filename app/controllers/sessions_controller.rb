@@ -11,9 +11,9 @@ class SessionsController < ApplicationController
     end
   
     def autologin
-      if logged_in_user
-        render json: {user: UserSerializer.new(logged_in_user)}
-      end
+        if logged_in_user
+            render json: {user: UserSerializer.new(logged_in_user)}
+        end
     end
 
 end
