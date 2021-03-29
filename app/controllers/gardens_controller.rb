@@ -5,10 +5,10 @@ class GardensController < ApplicationController
         render json: garden.to_json(include: [:user, :seeds], except: [:created_at, :updated_at])
     end
 
-    def index
-        gardens = Garden.all 
-        render json: GardenSerializer.new(gardens)
-    end
+    # def index
+    #     gardens = Garden.all 
+    #     render json: GardenSerializer.new(gardens)
+    # end
 
     def create
         # byebug 
@@ -18,19 +18,6 @@ class GardensController < ApplicationController
         else
             render json: {message: "failed to create"}
         end
-    end
-
-    def destroy
-        garden = Garden.find(params[:id])
-        garden.destroy
-        render json: {message: "garden has been deleted"}
-    end
-
-    def remove
-        byebug
-        garden = Garden.find(params[:id])
-        seed = Seed.find(params[:garden][:id])
-        garden.seeds.delete(seed)
     end
 
     def update 

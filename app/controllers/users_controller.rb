@@ -19,21 +19,6 @@ class UsersController < ApplicationController
         end
     end
 
-    def destroy
-        user = User.find(params[:id])
-        user.destroy
-        render json: {message: "user has been deleted"}
-    end
-
-    def update 
-        user = User.find(params[:id])
-        if user.update(user_params)
-            render json: UserSerializer.new(user)
-        else
-            render json: {error: "failed to update"}
-        end
-    end
-
     private
 
     def user_params

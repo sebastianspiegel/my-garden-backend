@@ -4,10 +4,10 @@ class SeedsController < ApplicationController
         render json: SeedSerializer.new(seeds)
     end
 
-    def show
-        seed = Seed.find(params[:id])
-        render json: seed.to_json
-    end
+    # def show
+    #     seed = Seed.find(params[:id])
+    #     render json: seed.to_json
+    # end
 
     def create
         # byebug
@@ -16,21 +16,6 @@ class SeedsController < ApplicationController
             render json: SeedSerializer.new(seed)
         else
             render json: {message: "failed to create"}
-        end
-    end
-
-    def destroy
-        seed = Seed.find(params[:id])
-        seed.destroy
-        render json: {message: "seed has been deleted"}
-    end
-
-    def update 
-        seed = Seed.find(params[:id])
-        if seed.update(seed_params)
-            render json: SeedSerializer.new(seed)
-        else
-            render json: {error: "failed to update"}
         end
     end
 
