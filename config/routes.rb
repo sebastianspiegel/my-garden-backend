@@ -9,5 +9,11 @@ Rails.application.routes.draw do
   end
 
   resources :gardens, only: [:show, :new, :create]
+
+  post 'auth', to: "sessions#login"
+  post 'autologin', to: "sessions#autologin"
+
+  post 'removeseed', to: "gardens#removeseed"
+  post 'addseed', to: "gardens#addseed"
   
 end

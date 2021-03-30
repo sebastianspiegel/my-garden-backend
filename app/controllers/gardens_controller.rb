@@ -31,6 +31,26 @@ class GardensController < ApplicationController
         end
     end
 
+    def removeseed
+        garden = Garden.find(params[:id])
+        seed = Seed.find(params[:garden][:id])
+        if garden.seeds.include?(seed)
+            garden.seeds.delete(seed)
+            render json: garden.to_json(include: [:user, :seeds], except: [:created_at, :updated_at])
+        end
+    end
+
+    def addseed
+        garden = Garden.find(params[:id])
+        seed = Seed.find(params[:garden][:id])
+        if garden.seeds.include?(seed)
+            render json: {message: "This seed is already included in this garden"}
+        else
+            garden.seeds << seed 
+            render json: garden.to_json(include: [:user, :seeds], except: [:created_at, :updated_at])
+        end
+    end
+
     private
 
     def garden_params
