@@ -5,15 +5,15 @@ Rails.application.routes.draw do
   resources :seeds, only: [:show, :index, :new, :create]
 
   resources :users do
-    resources :gardens, only: [:show, :new, :create]
+    resources :gardens, only: [:show, :new, :create, :index]
   end
 
-  resources :gardens, only: [:show, :new, :create]
+  resources :gardens
 
   post 'auth', to: "sessions#login"
   post 'autologin', to: "sessions#autologin"
 
-  post 'removeseed', to: "gardens#removeseed"
-  post 'addseed', to: "gardens#addseed"
+  # patch 'removeseed', to: "gardens#removeseed"
+  # patch 'addseed', to: "gardens#addseed"
   
 end
