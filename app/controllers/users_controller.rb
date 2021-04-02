@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:garden).permit(:username, :password)
+        params.permit(:username, :password)
     end
 
 end
