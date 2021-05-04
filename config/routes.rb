@@ -10,8 +10,9 @@ Rails.application.routes.draw do
 
   resources :gardens
 
-  post 'auth', to: "sessions#login"
-  post 'autologin', to: "sessions#autologin"
+  post '/login',    to: 'sessions#create'
+  post '/logout',   to: 'sessions#destroy'
+  get '/logged_in', to: 'sessions#is_logged_in?'
 
   # patch 'removeseed', to: "gardens#removeseed"
   # patch 'addseed', to: "gardens#addseed"
